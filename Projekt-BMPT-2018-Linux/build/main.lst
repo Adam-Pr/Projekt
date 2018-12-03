@@ -1,0 +1,1248 @@
+GAS LISTING /tmp/ccuqwZUw.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.global	setup
+  10               	setup:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 8FE0      		ldi r24,lo8(15)
+  16 0002 0E94 0000 		call lcd_init
+  17 0006 0E94 0000 		call lcd_clrscr
+  18 000a 259A      		sbi 0x4,5
+  19 000c 2D98      		cbi 0x5,5
+  20 000e 5298      		cbi 0xa,2
+  21 0010 5A9A      		sbi 0xb,2
+  22 0012 5398      		cbi 0xa,3
+  23 0014 5B9A      		sbi 0xb,3
+  24 0016 2398      		cbi 0x4,3
+  25 0018 2B9A      		sbi 0x5,3
+  26 001a E9E6      		ldi r30,lo8(105)
+  27 001c F0E0      		ldi r31,0
+  28 001e 8081      		ld r24,Z
+  29 0020 8260      		ori r24,lo8(2)
+  30 0022 8083      		st Z,r24
+  31 0024 E89A      		sbi 0x1d,0
+  32 0026 249A      		sbi 0x4,4
+  33 0028 239A      		sbi 0x4,3
+  34 002a 229A      		sbi 0x4,2
+  35 002c 2C98      		cbi 0x5,4
+  36 002e 2B98      		cbi 0x5,3
+  37 0030 2A98      		cbi 0x5,2
+  38 0032 5098      		cbi 0xa,0
+  39 0034 5198      		cbi 0xa,1
+  40 0036 589A      		sbi 0xb,0
+  41 0038 599A      		sbi 0xb,1
+  42 003a 0895      		ret
+  44               		.section	.rodata.str1.1,"aMS",@progbits,1
+  45               	.LC0:
+  46 0000 416B 7475 		.string	"Aktualni cas"
+  46      616C 6E69 
+  46      2063 6173 
+  46      00
+  47               	.LC1:
+  48 000d 5679 682E 		.string	"Vyh. odpovedi"
+  48      206F 6470 
+  48      6F76 6564 
+  48      6900 
+  49               	.LC2:
+  50 001b 506F 646D 		.string	"Podmenu"
+  50      656E 7500 
+  51               	.LC3:
+  52 0023 4F64 706F 		.string	"Odpocet"
+GAS LISTING /tmp/ccuqwZUw.s 			page 2
+
+
+  52      6365 7400 
+  53               	.LC4:
+  54 002b 566F 6C6E 		.string	"Volny slot-1"
+  54      7920 736C 
+  54      6F74 2D31 
+  54      00
+  55               	.LC5:
+  56 0038 566F 6C6E 		.string	"Volny slot-2"
+  56      7920 736C 
+  56      6F74 2D32 
+  56      00
+  57               	.LC6:
+  58 0045 504F 4420 		.string	"POD menu-1: time"
+  58      6D65 6E75 
+  58      2D31 3A20 
+  58      7469 6D65 
+  58      00
+  59               	.LC7:
+  60 0056 504F 4420 		.string	"POD menu-3"
+  60      6D65 6E75 
+  60      2D33 00
+  61               	.LC8:
+  62 0061 706F 644D 		.string	"podMENU-1"
+  62      454E 552D 
+  62      3100 
+  63               	.LC9:
+  64 006b 706F 644D 		.string	"podMENU-2"
+  64      454E 552D 
+  64      3200 
+  65               	.LC10:
+  66 0075 706F 644D 		.string	"podMENU-3"
+  66      454E 552D 
+  66      3300 
+  67               	.LC11:
+  68 007f 4E61 7374 		.string	"Nastaveni casu:"
+  68      6176 656E 
+  68      6920 6361 
+  68      7375 3A00 
+  69               	.LC12:
+  70 008f 504F 4420 		.string	"POD menu-5"
+  70      6D65 6E75 
+  70      2D35 00
+  71               	.LC13:
+  72 009a 504F 4420 		.string	"POD menu-6"
+  72      6D65 6E75 
+  72      2D36 00
+  73               	.LC14:
+  74 00a5 3A00      		.string	":"
+  75               		.section	.text.startup,"ax",@progbits
+  76               	.global	main
+  78               	main:
+  79 0000 CF93      		push r28
+  80 0002 DF93      		push r29
+  81 0004 CDB7      		in r28,__SP_L__
+  82 0006 DEB7      		in r29,__SP_H__
+  83 0008 2A97      		sbiw r28,10
+  84 000a 0FB6      		in __tmp_reg__,__SREG__
+GAS LISTING /tmp/ccuqwZUw.s 			page 3
+
+
+  85 000c F894      		cli
+  86 000e DEBF      		out __SP_H__,r29
+  87 0010 0FBE      		out __SREG__,__tmp_reg__
+  88 0012 CDBF      		out __SP_L__,r28
+  89               	/* prologue: function */
+  90               	/* frame size = 10 */
+  91               	/* stack size = 12 */
+  92               	.L__stack_usage = 12
+  93 0014 80E0      		ldi r24,0
+  94 0016 90E0      		ldi r25,0
+  95 0018 0E94 0000 		call time
+  96 001c 0E94 0000 		call setup
+  97 0020 0E94 0000 		call lcd_clrscr
+  98 0024 80E0      		ldi r24,lo8(.LC0)
+  99 0026 90E0      		ldi r25,hi8(.LC0)
+ 100 0028 0E94 0000 		call lcd_puts
+ 101 002c 61E0      		ldi r22,lo8(1)
+ 102 002e 80E0      		ldi r24,0
+ 103 0030 0E94 0000 		call lcd_gotoxy
+ 104 0034 80E0      		ldi r24,lo8(.LC1)
+ 105 0036 90E0      		ldi r25,hi8(.LC1)
+ 106 0038 0E94 0000 		call lcd_puts
+ 107 003c 61E0      		ldi r22,lo8(1)
+ 108 003e 8FE0      		ldi r24,lo8(15)
+ 109 0040 0E94 0000 		call lcd_gotoxy
+ 110 0044 60E0      		ldi r22,0
+ 111 0046 8FE0      		ldi r24,lo8(15)
+ 112 0048 0E94 0000 		call lcd_gotoxy
+ 113 004c 8AE2      		ldi r24,lo8(42)
+ 114 004e 0E94 0000 		call lcd_putc
+ 115 0052 2D98      		cbi 0x5,5
+ 116 0054 D12C      		mov r13,__zero_reg__
+ 117 0056 00E0      		ldi r16,0
+ 118 0058 C12C      		mov r12,__zero_reg__
+ 119 005a E12C      		mov r14,__zero_reg__
+ 120 005c FF24      		clr r15
+ 121 005e F394      		inc r15
+ 122 0060 11E0      		ldi r17,lo8(1)
+ 123 0062 56EB      		ldi r21,lo8(-74)
+ 124 0064 A52E      		mov r10,r21
+ 125 0066 53E0      		ldi r21,lo8(3)
+ 126 0068 B52E      		mov r11,r21
+ 127               	.L3:
+ 128 006a 4A99      		sbic 0x9,2
+ 129 006c 00C0      		rjmp .L4
+ 130 006e 1F5F      		subi r17,lo8(-(1))
+ 131 0070 1730      		cpi r17,lo8(7)
+ 132 0072 01F4      		brne .+2
+ 133 0074 00C0      		rjmp .L5
+ 134 0076 1330      		cpi r17,lo8(3)
+ 135 0078 01F4      		brne .+2
+ 136 007a 00C0      		rjmp .L6
+ 137 007c 00F4      		brsh .L7
+ 138 007e 1130      		cpi r17,lo8(1)
+ 139 0080 01F4      		brne .+2
+ 140 0082 00C0      		rjmp .L5
+ 141 0084 1230      		cpi r17,lo8(2)
+GAS LISTING /tmp/ccuqwZUw.s 			page 4
+
+
+ 142 0086 01F0      		breq .+2
+ 143 0088 00C0      		rjmp .L4
+ 144 008a 61E0      		ldi r22,lo8(1)
+ 145 008c 8CE0      		ldi r24,lo8(12)
+ 146 008e 0E94 0000 		call lcd_gotoxy
+ 147 0092 6FEF      		ldi r22,lo8(799999)
+ 148 0094 84E3      		ldi r24,hi8(799999)
+ 149 0096 9CE0      		ldi r25,hlo8(799999)
+ 150 0098 6150      	1:	subi r22,1
+ 151 009a 8040      		sbci r24,0
+ 152 009c 9040      		sbci r25,0
+ 153 009e 01F4      		brne 1b
+ 154 00a0 00C0      		rjmp .
+ 155 00a2 0000      		nop
+ 156 00a4 60E0      		ldi r22,0
+ 157 00a6 80E0      		ldi r24,0
+ 158 00a8 0E94 0000 		call lcd_gotoxy
+ 159 00ac 0E94 0000 		call lcd_clrscr
+ 160 00b0 80E0      		ldi r24,lo8(.LC0)
+ 161 00b2 90E0      		ldi r25,hi8(.LC0)
+ 162 00b4 0E94 0000 		call lcd_puts
+ 163 00b8 61E0      		ldi r22,lo8(1)
+ 164 00ba 80E0      		ldi r24,0
+ 165 00bc 0E94 0000 		call lcd_gotoxy
+ 166 00c0 80E0      		ldi r24,lo8(.LC1)
+ 167 00c2 90E0      		ldi r25,hi8(.LC1)
+ 168 00c4 00C0      		rjmp .L60
+ 169               	.L7:
+ 170 00c6 1530      		cpi r17,lo8(5)
+ 171 00c8 01F4      		brne .+2
+ 172 00ca 00C0      		rjmp .L9
+ 173 00cc 00F4      		brsh .+2
+ 174 00ce 00C0      		rjmp .L10
+ 175 00d0 1630      		cpi r17,lo8(6)
+ 176 00d2 01F0      		breq .+2
+ 177 00d4 00C0      		rjmp .L4
+ 178 00d6 61E0      		ldi r22,lo8(1)
+ 179 00d8 8CE0      		ldi r24,lo8(12)
+ 180 00da 0E94 0000 		call lcd_gotoxy
+ 181 00de 6FEF      		ldi r22,lo8(799999)
+ 182 00e0 84E3      		ldi r24,hi8(799999)
+ 183 00e2 9CE0      		ldi r25,hlo8(799999)
+ 184 00e4 6150      	1:	subi r22,1
+ 185 00e6 8040      		sbci r24,0
+ 186 00e8 9040      		sbci r25,0
+ 187 00ea 01F4      		brne 1b
+ 188 00ec 00C0      		rjmp .
+ 189 00ee 0000      		nop
+ 190 00f0 60E0      		ldi r22,0
+ 191 00f2 80E0      		ldi r24,0
+ 192 00f4 0E94 0000 		call lcd_gotoxy
+ 193 00f8 0E94 0000 		call lcd_clrscr
+ 194 00fc 80E0      		ldi r24,lo8(.LC4)
+ 195 00fe 90E0      		ldi r25,hi8(.LC4)
+ 196 0100 0E94 0000 		call lcd_puts
+ 197 0104 61E0      		ldi r22,lo8(1)
+ 198 0106 80E0      		ldi r24,0
+GAS LISTING /tmp/ccuqwZUw.s 			page 5
+
+
+ 199 0108 0E94 0000 		call lcd_gotoxy
+ 200 010c 80E0      		ldi r24,lo8(.LC5)
+ 201 010e 90E0      		ldi r25,hi8(.LC5)
+ 202 0110 00C0      		rjmp .L60
+ 203               	.L5:
+ 204 0112 61E0      		ldi r22,lo8(1)
+ 205 0114 8CE0      		ldi r24,lo8(12)
+ 206 0116 0E94 0000 		call lcd_gotoxy
+ 207 011a 2FEF      		ldi r18,lo8(799999)
+ 208 011c 34E3      		ldi r19,hi8(799999)
+ 209 011e 4CE0      		ldi r20,hlo8(799999)
+ 210 0120 2150      	1:	subi r18,1
+ 211 0122 3040      		sbci r19,0
+ 212 0124 4040      		sbci r20,0
+ 213 0126 01F4      		brne 1b
+ 214 0128 00C0      		rjmp .
+ 215 012a 0000      		nop
+ 216 012c 60E0      		ldi r22,0
+ 217 012e 80E0      		ldi r24,0
+ 218 0130 0E94 0000 		call lcd_gotoxy
+ 219 0134 0E94 0000 		call lcd_clrscr
+ 220 0138 80E0      		ldi r24,lo8(.LC0)
+ 221 013a 90E0      		ldi r25,hi8(.LC0)
+ 222 013c 0E94 0000 		call lcd_puts
+ 223 0140 61E0      		ldi r22,lo8(1)
+ 224 0142 80E0      		ldi r24,0
+ 225 0144 0E94 0000 		call lcd_gotoxy
+ 226 0148 80E0      		ldi r24,lo8(.LC1)
+ 227 014a 90E0      		ldi r25,hi8(.LC1)
+ 228 014c 0E94 0000 		call lcd_puts
+ 229 0150 60E0      		ldi r22,0
+ 230 0152 8FE0      		ldi r24,lo8(15)
+ 231 0154 0E94 0000 		call lcd_gotoxy
+ 232 0158 8AE2      		ldi r24,lo8(42)
+ 233 015a 0E94 0000 		call lcd_putc
+ 234 015e 11E0      		ldi r17,lo8(1)
+ 235 0160 00C0      		rjmp .L4
+ 236               	.L6:
+ 237 0162 61E0      		ldi r22,lo8(1)
+ 238 0164 8CE0      		ldi r24,lo8(12)
+ 239 0166 0E94 0000 		call lcd_gotoxy
+ 240 016a 2FEF      		ldi r18,lo8(799999)
+ 241 016c 34E3      		ldi r19,hi8(799999)
+ 242 016e 4CE0      		ldi r20,hlo8(799999)
+ 243 0170 2150      	1:	subi r18,1
+ 244 0172 3040      		sbci r19,0
+ 245 0174 4040      		sbci r20,0
+ 246 0176 01F4      		brne 1b
+ 247 0178 00C0      		rjmp .
+ 248 017a 0000      		nop
+ 249 017c 60E0      		ldi r22,0
+ 250 017e 80E0      		ldi r24,0
+ 251 0180 0E94 0000 		call lcd_gotoxy
+ 252 0184 0E94 0000 		call lcd_clrscr
+ 253 0188 80E0      		ldi r24,lo8(.LC2)
+ 254 018a 90E0      		ldi r25,hi8(.LC2)
+ 255 018c 0E94 0000 		call lcd_puts
+GAS LISTING /tmp/ccuqwZUw.s 			page 6
+
+
+ 256 0190 61E0      		ldi r22,lo8(1)
+ 257 0192 80E0      		ldi r24,0
+ 258 0194 0E94 0000 		call lcd_gotoxy
+ 259 0198 80E0      		ldi r24,lo8(.LC3)
+ 260 019a 90E0      		ldi r25,hi8(.LC3)
+ 261 019c 00C0      		rjmp .L65
+ 262               	.L10:
+ 263 019e 61E0      		ldi r22,lo8(1)
+ 264 01a0 8CE0      		ldi r24,lo8(12)
+ 265 01a2 0E94 0000 		call lcd_gotoxy
+ 266 01a6 6FEF      		ldi r22,lo8(799999)
+ 267 01a8 84E3      		ldi r24,hi8(799999)
+ 268 01aa 9CE0      		ldi r25,hlo8(799999)
+ 269 01ac 6150      	1:	subi r22,1
+ 270 01ae 8040      		sbci r24,0
+ 271 01b0 9040      		sbci r25,0
+ 272 01b2 01F4      		brne 1b
+ 273 01b4 00C0      		rjmp .
+ 274 01b6 0000      		nop
+ 275 01b8 60E0      		ldi r22,0
+ 276 01ba 80E0      		ldi r24,0
+ 277 01bc 0E94 0000 		call lcd_gotoxy
+ 278 01c0 0E94 0000 		call lcd_clrscr
+ 279 01c4 80E0      		ldi r24,lo8(.LC2)
+ 280 01c6 90E0      		ldi r25,hi8(.LC2)
+ 281 01c8 0E94 0000 		call lcd_puts
+ 282 01cc 61E0      		ldi r22,lo8(1)
+ 283 01ce 80E0      		ldi r24,0
+ 284 01d0 0E94 0000 		call lcd_gotoxy
+ 285 01d4 80E0      		ldi r24,lo8(.LC3)
+ 286 01d6 90E0      		ldi r25,hi8(.LC3)
+ 287 01d8 00C0      		rjmp .L60
+ 288               	.L9:
+ 289 01da 61E0      		ldi r22,lo8(1)
+ 290 01dc 8CE0      		ldi r24,lo8(12)
+ 291 01de 0E94 0000 		call lcd_gotoxy
+ 292 01e2 2FEF      		ldi r18,lo8(799999)
+ 293 01e4 34E3      		ldi r19,hi8(799999)
+ 294 01e6 4CE0      		ldi r20,hlo8(799999)
+ 295 01e8 2150      	1:	subi r18,1
+ 296 01ea 3040      		sbci r19,0
+ 297 01ec 4040      		sbci r20,0
+ 298 01ee 01F4      		brne 1b
+ 299 01f0 00C0      		rjmp .
+ 300 01f2 0000      		nop
+ 301 01f4 60E0      		ldi r22,0
+ 302 01f6 80E0      		ldi r24,0
+ 303 01f8 0E94 0000 		call lcd_gotoxy
+ 304 01fc 0E94 0000 		call lcd_clrscr
+ 305 0200 80E0      		ldi r24,lo8(.LC4)
+ 306 0202 90E0      		ldi r25,hi8(.LC4)
+ 307 0204 0E94 0000 		call lcd_puts
+ 308 0208 61E0      		ldi r22,lo8(1)
+ 309 020a 80E0      		ldi r24,0
+ 310 020c 0E94 0000 		call lcd_gotoxy
+ 311 0210 80E0      		ldi r24,lo8(.LC5)
+ 312 0212 90E0      		ldi r25,hi8(.LC5)
+GAS LISTING /tmp/ccuqwZUw.s 			page 7
+
+
+ 313               	.L65:
+ 314 0214 0E94 0000 		call lcd_puts
+ 315 0218 60E0      		ldi r22,0
+ 316 021a 00C0      		rjmp .L61
+ 317               	.L60:
+ 318 021c 0E94 0000 		call lcd_puts
+ 319 0220 61E0      		ldi r22,lo8(1)
+ 320               	.L61:
+ 321 0222 8FE0      		ldi r24,lo8(15)
+ 322 0224 0E94 0000 		call lcd_gotoxy
+ 323 0228 8AE2      		ldi r24,lo8(42)
+ 324 022a 0E94 0000 		call lcd_putc
+ 325               	.L4:
+ 326 022e 4B99      		sbic 0x9,3
+ 327 0230 00C0      		rjmp .L12
+ 328 0232 1330      		cpi r17,lo8(3)
+ 329 0234 01F0      		breq .L13
+ 330 0236 00F4      		brsh .L14
+ 331 0238 1130      		cpi r17,lo8(1)
+ 332 023a 01F0      		breq .L15
+ 333 023c 1230      		cpi r17,lo8(2)
+ 334 023e 01F0      		breq .L16
+ 335 0240 00C0      		rjmp .L12
+ 336               	.L14:
+ 337 0242 1530      		cpi r17,lo8(5)
+ 338 0244 01F4      		brne .+2
+ 339 0246 00C0      		rjmp .L17
+ 340 0248 00F4      		brsh .+2
+ 341 024a 00C0      		rjmp .L18
+ 342 024c 1630      		cpi r17,lo8(6)
+ 343 024e 01F0      		breq .+2
+ 344 0250 00C0      		rjmp .L12
+ 345 0252 0E94 0000 		call lcd_clrscr
+ 346 0256 60E0      		ldi r22,0
+ 347 0258 80E0      		ldi r24,0
+ 348 025a 0E94 0000 		call lcd_gotoxy
+ 349 025e 80E0      		ldi r24,lo8(.LC13)
+ 350 0260 90E0      		ldi r25,hi8(.LC13)
+ 351 0262 00C0      		rjmp .L63
+ 352               	.L15:
+ 353 0264 0E94 0000 		call lcd_clrscr
+ 354 0268 60E0      		ldi r22,0
+ 355 026a 80E0      		ldi r24,0
+ 356 026c 0E94 0000 		call lcd_gotoxy
+ 357 0270 80E0      		ldi r24,lo8(.LC6)
+ 358 0272 90E0      		ldi r25,hi8(.LC6)
+ 359 0274 0E94 0000 		call lcd_puts
+ 360 0278 61E0      		ldi r22,lo8(1)
+ 361 027a 80E0      		ldi r24,0
+ 362 027c 0E94 0000 		call lcd_gotoxy
+ 363 0280 00C0      		rjmp .L12
+ 364               	.L16:
+ 365 0282 0E94 0000 		call lcd_clrscr
+ 366 0286 60E0      		ldi r22,0
+ 367 0288 80E0      		ldi r24,0
+ 368 028a 0E94 0000 		call lcd_gotoxy
+ 369 028e 80E0      		ldi r24,lo8(.LC1)
+GAS LISTING /tmp/ccuqwZUw.s 			page 8
+
+
+ 370 0290 90E0      		ldi r25,hi8(.LC1)
+ 371 0292 0E94 0000 		call lcd_puts
+ 372 0296 4B99      		sbic 0x9,3
+ 373 0298 00C0      		rjmp .L12
+ 374 029a 2FEF      		ldi r18,lo8(799999)
+ 375 029c 34E3      		ldi r19,hi8(799999)
+ 376 029e 4CE0      		ldi r20,hlo8(799999)
+ 377 02a0 2150      	1:	subi r18,1
+ 378 02a2 3040      		sbci r19,0
+ 379 02a4 4040      		sbci r20,0
+ 380 02a6 01F4      		brne 1b
+ 381 02a8 00C0      		rjmp .
+ 382 02aa 0000      		nop
+ 383 02ac 00C0      		rjmp .L20
+ 384               	.L13:
+ 385 02ae 0E94 0000 		call lcd_clrscr
+ 386 02b2 60E0      		ldi r22,0
+ 387 02b4 80E0      		ldi r24,0
+ 388 02b6 0E94 0000 		call lcd_gotoxy
+ 389 02ba 80E0      		ldi r24,lo8(.LC7)
+ 390 02bc 90E0      		ldi r25,hi8(.LC7)
+ 391 02be 0E94 0000 		call lcd_puts
+ 392 02c2 4B99      		sbic 0x9,3
+ 393 02c4 00C0      		rjmp .L12
+ 394 02c6 F394      		inc r15
+ 395 02c8 64E0      		ldi r22,lo8(4)
+ 396 02ca F612      		cpse r15,r22
+ 397 02cc 00C0      		rjmp .L21
+ 398 02ce FF24      		clr r15
+ 399 02d0 F394      		inc r15
+ 400               	.L21:
+ 401 02d2 8FEF      		ldi r24,lo8(799999)
+ 402 02d4 94E3      		ldi r25,hi8(799999)
+ 403 02d6 2CE0      		ldi r18,hlo8(799999)
+ 404 02d8 8150      	1:	subi r24,1
+ 405 02da 9040      		sbci r25,0
+ 406 02dc 2040      		sbci r18,0
+ 407 02de 01F4      		brne 1b
+ 408 02e0 00C0      		rjmp .
+ 409 02e2 0000      		nop
+ 410 02e4 32E0      		ldi r19,lo8(2)
+ 411 02e6 F316      		cp r15,r19
+ 412 02e8 01F0      		breq .L22
+ 413 02ea 43E0      		ldi r20,lo8(3)
+ 414 02ec 61E0      		ldi r22,lo8(1)
+ 415 02ee F416      		cp r15,r20
+ 416 02f0 01F4      		brne .+2
+ 417 02f2 00C0      		rjmp .L23
+ 418 02f4 F612      		cpse r15,r22
+ 419 02f6 00C0      		rjmp .L12
+ 420 02f8 8CE0      		ldi r24,lo8(12)
+ 421 02fa 0E94 0000 		call lcd_gotoxy
+ 422 02fe 4AE0      		ldi r20,lo8(10)
+ 423 0300 BE01      		movw r22,r28
+ 424 0302 6F5F      		subi r22,-1
+ 425 0304 7F4F      		sbci r23,-1
+ 426 0306 81E0      		ldi r24,lo8(1)
+GAS LISTING /tmp/ccuqwZUw.s 			page 9
+
+
+ 427 0308 90E0      		ldi r25,0
+ 428 030a 0E94 0000 		call __itoa_ncheck
+ 429 030e CE01      		movw r24,r28
+ 430 0310 0196      		adiw r24,1
+ 431 0312 0E94 0000 		call lcd_puts
+ 432 0316 8FEF      		ldi r24,lo8(799999)
+ 433 0318 94E3      		ldi r25,hi8(799999)
+ 434 031a 2CE0      		ldi r18,hlo8(799999)
+ 435 031c 8150      	1:	subi r24,1
+ 436 031e 9040      		sbci r25,0
+ 437 0320 2040      		sbci r18,0
+ 438 0322 01F4      		brne 1b
+ 439 0324 00C0      		rjmp .
+ 440 0326 0000      		nop
+ 441 0328 60E0      		ldi r22,0
+ 442 032a 80E0      		ldi r24,0
+ 443 032c 0E94 0000 		call lcd_gotoxy
+ 444 0330 0E94 0000 		call lcd_clrscr
+ 445 0334 80E0      		ldi r24,lo8(.LC8)
+ 446 0336 90E0      		ldi r25,hi8(.LC8)
+ 447 0338 0E94 0000 		call lcd_puts
+ 448 033c 61E0      		ldi r22,lo8(1)
+ 449 033e 80E0      		ldi r24,0
+ 450 0340 0E94 0000 		call lcd_gotoxy
+ 451 0344 80E0      		ldi r24,lo8(.LC9)
+ 452 0346 90E0      		ldi r25,hi8(.LC9)
+ 453 0348 00C0      		rjmp .L64
+ 454               	.L22:
+ 455 034a 61E0      		ldi r22,lo8(1)
+ 456 034c 8CE0      		ldi r24,lo8(12)
+ 457 034e 0E94 0000 		call lcd_gotoxy
+ 458 0352 4AE0      		ldi r20,lo8(10)
+ 459 0354 BE01      		movw r22,r28
+ 460 0356 6F5F      		subi r22,-1
+ 461 0358 7F4F      		sbci r23,-1
+ 462 035a 82E0      		ldi r24,lo8(2)
+ 463 035c 90E0      		ldi r25,0
+ 464 035e 0E94 0000 		call __itoa_ncheck
+ 465 0362 CE01      		movw r24,r28
+ 466 0364 0196      		adiw r24,1
+ 467 0366 0E94 0000 		call lcd_puts
+ 468 036a 3FEF      		ldi r19,lo8(799999)
+ 469 036c 44E3      		ldi r20,hi8(799999)
+ 470 036e 6CE0      		ldi r22,hlo8(799999)
+ 471 0370 3150      	1:	subi r19,1
+ 472 0372 4040      		sbci r20,0
+ 473 0374 6040      		sbci r22,0
+ 474 0376 01F4      		brne 1b
+ 475 0378 00C0      		rjmp .
+ 476 037a 0000      		nop
+ 477 037c 60E0      		ldi r22,0
+ 478 037e 80E0      		ldi r24,0
+ 479 0380 0E94 0000 		call lcd_gotoxy
+ 480 0384 0E94 0000 		call lcd_clrscr
+ 481 0388 80E0      		ldi r24,lo8(.LC8)
+ 482 038a 90E0      		ldi r25,hi8(.LC8)
+ 483 038c 0E94 0000 		call lcd_puts
+GAS LISTING /tmp/ccuqwZUw.s 			page 10
+
+
+ 484 0390 61E0      		ldi r22,lo8(1)
+ 485 0392 80E0      		ldi r24,0
+ 486 0394 0E94 0000 		call lcd_gotoxy
+ 487 0398 80E0      		ldi r24,lo8(.LC9)
+ 488 039a 90E0      		ldi r25,hi8(.LC9)
+ 489 039c 0E94 0000 		call lcd_puts
+ 490 03a0 61E0      		ldi r22,lo8(1)
+ 491 03a2 00C0      		rjmp .L62
+ 492               	.L23:
+ 493 03a4 8CE0      		ldi r24,lo8(12)
+ 494 03a6 0E94 0000 		call lcd_gotoxy
+ 495 03aa 4AE0      		ldi r20,lo8(10)
+ 496 03ac BE01      		movw r22,r28
+ 497 03ae 6F5F      		subi r22,-1
+ 498 03b0 7F4F      		sbci r23,-1
+ 499 03b2 83E0      		ldi r24,lo8(3)
+ 500 03b4 90E0      		ldi r25,0
+ 501 03b6 0E94 0000 		call __itoa_ncheck
+ 502 03ba CE01      		movw r24,r28
+ 503 03bc 0196      		adiw r24,1
+ 504 03be 0E94 0000 		call lcd_puts
+ 505 03c2 8FEF      		ldi r24,lo8(799999)
+ 506 03c4 94E3      		ldi r25,hi8(799999)
+ 507 03c6 2CE0      		ldi r18,hlo8(799999)
+ 508 03c8 8150      	1:	subi r24,1
+ 509 03ca 9040      		sbci r25,0
+ 510 03cc 2040      		sbci r18,0
+ 511 03ce 01F4      		brne 1b
+ 512 03d0 00C0      		rjmp .
+ 513 03d2 0000      		nop
+ 514 03d4 60E0      		ldi r22,0
+ 515 03d6 80E0      		ldi r24,0
+ 516 03d8 0E94 0000 		call lcd_gotoxy
+ 517 03dc 0E94 0000 		call lcd_clrscr
+ 518 03e0 80E0      		ldi r24,lo8(.LC10)
+ 519 03e2 90E0      		ldi r25,hi8(.LC10)
+ 520               	.L64:
+ 521 03e4 0E94 0000 		call lcd_puts
+ 522 03e8 60E0      		ldi r22,0
+ 523               	.L62:
+ 524 03ea 8AE0      		ldi r24,lo8(10)
+ 525 03ec 0E94 0000 		call lcd_gotoxy
+ 526 03f0 8AE2      		ldi r24,lo8(42)
+ 527 03f2 0E94 0000 		call lcd_putc
+ 528 03f6 00C0      		rjmp .L12
+ 529               	.L18:
+ 530 03f8 0E94 0000 		call lcd_clrscr
+ 531 03fc 60E0      		ldi r22,0
+ 532 03fe 80E0      		ldi r24,0
+ 533 0400 0E94 0000 		call lcd_gotoxy
+ 534 0404 80E0      		ldi r24,lo8(.LC11)
+ 535 0406 90E0      		ldi r25,hi8(.LC11)
+ 536 0408 0E94 0000 		call lcd_puts
+ 537 040c 4B99      		sbic 0x9,3
+ 538 040e 00C0      		rjmp .L12
+ 539 0410 CC24      		clr r12
+ 540 0412 C394      		inc r12
+GAS LISTING /tmp/ccuqwZUw.s 			page 11
+
+
+ 541 0414 00C0      		rjmp .L12
+ 542               	.L17:
+ 543 0416 0E94 0000 		call lcd_clrscr
+ 544 041a 60E0      		ldi r22,0
+ 545 041c 80E0      		ldi r24,0
+ 546 041e 0E94 0000 		call lcd_gotoxy
+ 547 0422 80E0      		ldi r24,lo8(.LC12)
+ 548 0424 90E0      		ldi r25,hi8(.LC12)
+ 549               	.L63:
+ 550 0426 0E94 0000 		call lcd_puts
+ 551               	.L12:
+ 552 042a 31E0      		ldi r19,lo8(1)
+ 553 042c E312      		cpse r14,r19
+ 554 042e 00C0      		rjmp .L25
+ 555               	.L20:
+ 556 0430 4899      		sbic 0x9,0
+ 557 0432 00C0      		rjmp .L26
+ 558 0434 2C98      		cbi 0x5,4
+ 559 0436 2B9A      		sbi 0x5,3
+ 560 0438 4FEF      		ldi r20,lo8(3199999)
+ 561 043a 63ED      		ldi r22,hi8(3199999)
+ 562 043c 80E3      		ldi r24,hlo8(3199999)
+ 563 043e 4150      	1:	subi r20,1
+ 564 0440 6040      		sbci r22,0
+ 565 0442 8040      		sbci r24,0
+ 566 0444 01F4      		brne 1b
+ 567 0446 00C0      		rjmp .
+ 568 0448 0000      		nop
+ 569 044a 2B98      		cbi 0x5,3
+ 570 044c 9FEF      		ldi r25,lo8(3199999)
+ 571 044e 23ED      		ldi r18,hi8(3199999)
+ 572 0450 30E3      		ldi r19,hlo8(3199999)
+ 573 0452 9150      	1:	subi r25,1
+ 574 0454 2040      		sbci r18,0
+ 575 0456 3040      		sbci r19,0
+ 576 0458 01F4      		brne 1b
+ 577 045a 00C0      		rjmp .
+ 578 045c 0000      		nop
+ 579 045e 2B9A      		sbi 0x5,3
+ 580 0460 4FEF      		ldi r20,lo8(3199999)
+ 581 0462 63ED      		ldi r22,hi8(3199999)
+ 582 0464 80E3      		ldi r24,hlo8(3199999)
+ 583 0466 4150      	1:	subi r20,1
+ 584 0468 6040      		sbci r22,0
+ 585 046a 8040      		sbci r24,0
+ 586 046c 01F4      		brne 1b
+ 587 046e 00C0      		rjmp .
+ 588 0470 0000      		nop
+ 589 0472 2B98      		cbi 0x5,3
+ 590 0474 9FEF      		ldi r25,lo8(3199999)
+ 591 0476 23ED      		ldi r18,hi8(3199999)
+ 592 0478 30E3      		ldi r19,hlo8(3199999)
+ 593 047a 9150      	1:	subi r25,1
+ 594 047c 2040      		sbci r18,0
+ 595 047e 3040      		sbci r19,0
+ 596 0480 01F4      		brne 1b
+ 597 0482 00C0      		rjmp .
+GAS LISTING /tmp/ccuqwZUw.s 			page 12
+
+
+ 598 0484 0000      		nop
+ 599 0486 2B9A      		sbi 0x5,3
+ 600 0488 4FEF      		ldi r20,lo8(9599999)
+ 601 048a 6BE7      		ldi r22,hi8(9599999)
+ 602 048c 82E9      		ldi r24,hlo8(9599999)
+ 603 048e 4150      	1:	subi r20,1
+ 604 0490 6040      		sbci r22,0
+ 605 0492 8040      		sbci r24,0
+ 606 0494 01F4      		brne 1b
+ 607 0496 00C0      		rjmp .
+ 608 0498 0000      		nop
+ 609 049a 2B98      		cbi 0x5,3
+ 610               	.L26:
+ 611 049c 4999      		sbic 0x9,1
+ 612 049e 00C0      		rjmp .L27
+ 613 04a0 80E0      		ldi r24,lo8(.LC13)
+ 614 04a2 90E0      		ldi r25,hi8(.LC13)
+ 615 04a4 0E94 0000 		call lcd_puts
+ 616 04a8 2C98      		cbi 0x5,4
+ 617 04aa 2A9A      		sbi 0x5,2
+ 618 04ac 9FEF      		ldi r25,lo8(3199999)
+ 619 04ae 23ED      		ldi r18,hi8(3199999)
+ 620 04b0 30E3      		ldi r19,hlo8(3199999)
+ 621 04b2 9150      	1:	subi r25,1
+ 622 04b4 2040      		sbci r18,0
+ 623 04b6 3040      		sbci r19,0
+ 624 04b8 01F4      		brne 1b
+ 625 04ba 00C0      		rjmp .
+ 626 04bc 0000      		nop
+ 627 04be 2A98      		cbi 0x5,2
+ 628 04c0 4FEF      		ldi r20,lo8(3199999)
+ 629 04c2 63ED      		ldi r22,hi8(3199999)
+ 630 04c4 80E3      		ldi r24,hlo8(3199999)
+ 631 04c6 4150      	1:	subi r20,1
+ 632 04c8 6040      		sbci r22,0
+ 633 04ca 8040      		sbci r24,0
+ 634 04cc 01F4      		brne 1b
+ 635 04ce 00C0      		rjmp .
+ 636 04d0 0000      		nop
+ 637 04d2 2A9A      		sbi 0x5,2
+ 638 04d4 9FEF      		ldi r25,lo8(3199999)
+ 639 04d6 23ED      		ldi r18,hi8(3199999)
+ 640 04d8 30E3      		ldi r19,hlo8(3199999)
+ 641 04da 9150      	1:	subi r25,1
+ 642 04dc 2040      		sbci r18,0
+ 643 04de 3040      		sbci r19,0
+ 644 04e0 01F4      		brne 1b
+ 645 04e2 00C0      		rjmp .
+ 646 04e4 0000      		nop
+ 647 04e6 2A98      		cbi 0x5,2
+ 648 04e8 4FEF      		ldi r20,lo8(3199999)
+ 649 04ea 63ED      		ldi r22,hi8(3199999)
+ 650 04ec 80E3      		ldi r24,hlo8(3199999)
+ 651 04ee 4150      	1:	subi r20,1
+ 652 04f0 6040      		sbci r22,0
+ 653 04f2 8040      		sbci r24,0
+ 654 04f4 01F4      		brne 1b
+GAS LISTING /tmp/ccuqwZUw.s 			page 13
+
+
+ 655 04f6 00C0      		rjmp .
+ 656 04f8 0000      		nop
+ 657 04fa 2A9A      		sbi 0x5,2
+ 658 04fc 9FEF      		ldi r25,lo8(9599999)
+ 659 04fe 2BE7      		ldi r18,hi8(9599999)
+ 660 0500 32E9      		ldi r19,hlo8(9599999)
+ 661 0502 9150      	1:	subi r25,1
+ 662 0504 2040      		sbci r18,0
+ 663 0506 3040      		sbci r19,0
+ 664 0508 01F4      		brne 1b
+ 665 050a 00C0      		rjmp .
+ 666 050c 0000      		nop
+ 667 050e 2A98      		cbi 0x5,2
+ 668               	.L27:
+ 669 0510 4B99      		sbic 0x9,3
+ 670 0512 00C0      		rjmp .L28
+ 671 0514 2C98      		cbi 0x5,4
+ 672 0516 4FEF      		ldi r20,lo8(799999)
+ 673 0518 64E3      		ldi r22,hi8(799999)
+ 674 051a 8CE0      		ldi r24,hlo8(799999)
+ 675 051c 4150      	1:	subi r20,1
+ 676 051e 6040      		sbci r22,0
+ 677 0520 8040      		sbci r24,0
+ 678 0522 01F4      		brne 1b
+ 679 0524 00C0      		rjmp .
+ 680 0526 0000      		nop
+ 681 0528 42E0      		ldi r20,lo8(2)
+ 682 052a E42E      		mov r14,r20
+ 683               	.L37:
+ 684 052c 86EB      		ldi r24,lo8(-74)
+ 685 052e 93E0      		ldi r25,lo8(3)
+ 686 0530 00C0      		rjmp .L29
+ 687               	.L28:
+ 688 0532 85EB      		ldi r24,lo8(-75)
+ 689 0534 93E0      		ldi r25,lo8(3)
+ 690 0536 EE24      		clr r14
+ 691 0538 E394      		inc r14
+ 692               	.L36:
+ 693 053a A501      		movw r20,r10
+ 694 053c 481B      		sub r20,r24
+ 695 053e 590B      		sbc r21,r25
+ 696 0540 4899      		sbic 0x9,0
+ 697 0542 00C0      		rjmp .L30
+ 698 0544 2C98      		cbi 0x5,4
+ 699 0546 2B9A      		sbi 0x5,3
+ 700 0548 2FEF      		ldi r18,lo8(3199999)
+ 701 054a 33ED      		ldi r19,hi8(3199999)
+ 702 054c 60E3      		ldi r22,hlo8(3199999)
+ 703 054e 2150      	1:	subi r18,1
+ 704 0550 3040      		sbci r19,0
+ 705 0552 6040      		sbci r22,0
+ 706 0554 01F4      		brne 1b
+ 707 0556 00C0      		rjmp .
+ 708 0558 0000      		nop
+ 709 055a 2B98      		cbi 0x5,3
+ 710 055c 2FEF      		ldi r18,lo8(3199999)
+ 711 055e 33ED      		ldi r19,hi8(3199999)
+GAS LISTING /tmp/ccuqwZUw.s 			page 14
+
+
+ 712 0560 60E3      		ldi r22,hlo8(3199999)
+ 713 0562 2150      	1:	subi r18,1
+ 714 0564 3040      		sbci r19,0
+ 715 0566 6040      		sbci r22,0
+ 716 0568 01F4      		brne 1b
+ 717 056a 00C0      		rjmp .
+ 718 056c 0000      		nop
+ 719 056e 2B9A      		sbi 0x5,3
+ 720 0570 2FEF      		ldi r18,lo8(3199999)
+ 721 0572 33ED      		ldi r19,hi8(3199999)
+ 722 0574 60E3      		ldi r22,hlo8(3199999)
+ 723 0576 2150      	1:	subi r18,1
+ 724 0578 3040      		sbci r19,0
+ 725 057a 6040      		sbci r22,0
+ 726 057c 01F4      		brne 1b
+ 727 057e 00C0      		rjmp .
+ 728 0580 0000      		nop
+ 729 0582 2B98      		cbi 0x5,3
+ 730 0584 2FEF      		ldi r18,lo8(3199999)
+ 731 0586 33ED      		ldi r19,hi8(3199999)
+ 732 0588 60E3      		ldi r22,hlo8(3199999)
+ 733 058a 2150      	1:	subi r18,1
+ 734 058c 3040      		sbci r19,0
+ 735 058e 6040      		sbci r22,0
+ 736 0590 01F4      		brne 1b
+ 737 0592 00C0      		rjmp .
+ 738 0594 0000      		nop
+ 739 0596 2B9A      		sbi 0x5,3
+ 740 0598 2FEF      		ldi r18,lo8(9599999)
+ 741 059a 3BE7      		ldi r19,hi8(9599999)
+ 742 059c 62E9      		ldi r22,hlo8(9599999)
+ 743 059e 2150      	1:	subi r18,1
+ 744 05a0 3040      		sbci r19,0
+ 745 05a2 6040      		sbci r22,0
+ 746 05a4 01F4      		brne 1b
+ 747 05a6 00C0      		rjmp .
+ 748 05a8 0000      		nop
+ 749 05aa 2B98      		cbi 0x5,3
+ 750               	.L30:
+ 751 05ac 4999      		sbic 0x9,1
+ 752 05ae 00C0      		rjmp .L31
+ 753 05b0 2C98      		cbi 0x5,4
+ 754 05b2 2A9A      		sbi 0x5,2
+ 755 05b4 2FEF      		ldi r18,lo8(3199999)
+ 756 05b6 33ED      		ldi r19,hi8(3199999)
+ 757 05b8 60E3      		ldi r22,hlo8(3199999)
+ 758 05ba 2150      	1:	subi r18,1
+ 759 05bc 3040      		sbci r19,0
+ 760 05be 6040      		sbci r22,0
+ 761 05c0 01F4      		brne 1b
+ 762 05c2 00C0      		rjmp .
+ 763 05c4 0000      		nop
+ 764 05c6 2A98      		cbi 0x5,2
+ 765 05c8 2FEF      		ldi r18,lo8(3199999)
+ 766 05ca 33ED      		ldi r19,hi8(3199999)
+ 767 05cc 60E3      		ldi r22,hlo8(3199999)
+ 768 05ce 2150      	1:	subi r18,1
+GAS LISTING /tmp/ccuqwZUw.s 			page 15
+
+
+ 769 05d0 3040      		sbci r19,0
+ 770 05d2 6040      		sbci r22,0
+ 771 05d4 01F4      		brne 1b
+ 772 05d6 00C0      		rjmp .
+ 773 05d8 0000      		nop
+ 774 05da 2A9A      		sbi 0x5,2
+ 775 05dc 2FEF      		ldi r18,lo8(3199999)
+ 776 05de 33ED      		ldi r19,hi8(3199999)
+ 777 05e0 60E3      		ldi r22,hlo8(3199999)
+ 778 05e2 2150      	1:	subi r18,1
+ 779 05e4 3040      		sbci r19,0
+ 780 05e6 6040      		sbci r22,0
+ 781 05e8 01F4      		brne 1b
+ 782 05ea 00C0      		rjmp .
+ 783 05ec 0000      		nop
+ 784 05ee 2A98      		cbi 0x5,2
+ 785 05f0 2FEF      		ldi r18,lo8(3199999)
+ 786 05f2 33ED      		ldi r19,hi8(3199999)
+ 787 05f4 60E3      		ldi r22,hlo8(3199999)
+ 788 05f6 2150      	1:	subi r18,1
+ 789 05f8 3040      		sbci r19,0
+ 790 05fa 6040      		sbci r22,0
+ 791 05fc 01F4      		brne 1b
+ 792 05fe 00C0      		rjmp .
+ 793 0600 0000      		nop
+ 794 0602 2A9A      		sbi 0x5,2
+ 795 0604 2FEF      		ldi r18,lo8(9599999)
+ 796 0606 3BE7      		ldi r19,hi8(9599999)
+ 797 0608 62E9      		ldi r22,hlo8(9599999)
+ 798 060a 2150      	1:	subi r18,1
+ 799 060c 3040      		sbci r19,0
+ 800 060e 6040      		sbci r22,0
+ 801 0610 01F4      		brne 1b
+ 802 0612 00C0      		rjmp .
+ 803 0614 0000      		nop
+ 804 0616 2A98      		cbi 0x5,2
+ 805               	.L31:
+ 806 0618 4B99      		sbic 0x9,3
+ 807 061a 00C0      		rjmp .L32
+ 808 061c 2C98      		cbi 0x5,4
+ 809 061e 2FEF      		ldi r18,lo8(799999)
+ 810 0620 34E3      		ldi r19,hi8(799999)
+ 811 0622 6CE0      		ldi r22,hlo8(799999)
+ 812 0624 2150      	1:	subi r18,1
+ 813 0626 3040      		sbci r19,0
+ 814 0628 6040      		sbci r22,0
+ 815 062a 01F4      		brne 1b
+ 816 062c 00C0      		rjmp .
+ 817 062e 0000      		nop
+ 818 0630 32E0      		ldi r19,lo8(2)
+ 819 0632 E32E      		mov r14,r19
+ 820               	.L32:
+ 821 0634 2C98      		cbi 0x5,4
+ 822 0636 20E0      		ldi r18,0
+ 823 0638 30E0      		ldi r19,0
+ 824               	.L33:
+ 825 063a 65E0      		ldi r22,lo8(5)
+GAS LISTING /tmp/ccuqwZUw.s 			page 16
+
+
+ 826 063c 6A95      	1:	dec r22
+ 827 063e 01F4      		brne 1b
+ 828 0640 0000      		nop
+ 829 0642 2F5F      		subi r18,-1
+ 830 0644 3F4F      		sbci r19,-1
+ 831 0646 2417      		cp r18,r20
+ 832 0648 3507      		cpc r19,r21
+ 833 064a 01F4      		brne .L33
+ 834 064c 2C9A      		sbi 0x5,4
+ 835 064e 20E0      		ldi r18,0
+ 836 0650 30E0      		ldi r19,0
+ 837               	.L34:
+ 838 0652 2817      		cp r18,r24
+ 839 0654 3907      		cpc r19,r25
+ 840 0656 00F4      		brsh .L67
+ 841 0658 45E0      		ldi r20,lo8(5)
+ 842 065a 4A95      	1:	dec r20
+ 843 065c 01F4      		brne 1b
+ 844 065e 0000      		nop
+ 845 0660 2F5F      		subi r18,-1
+ 846 0662 3F4F      		sbci r19,-1
+ 847 0664 00C0      		rjmp .L34
+ 848               	.L67:
+ 849 0666 0197      		sbiw r24,1
+ 850 0668 01F0      		breq .+2
+ 851 066a 00C0      		rjmp .L36
+ 852 066c 00C0      		rjmp .L37
+ 853               	.L68:
+ 854 066e 0197      		sbiw r24,1
+ 855 0670 01F4      		brne .+2
+ 856 0672 00C0      		rjmp .L25
+ 857               	.L29:
+ 858 0674 4899      		sbic 0x9,0
+ 859 0676 00C0      		rjmp .L38
+ 860 0678 2C98      		cbi 0x5,4
+ 861 067a 2B9A      		sbi 0x5,3
+ 862 067c 6FEF      		ldi r22,lo8(3199999)
+ 863 067e 23ED      		ldi r18,hi8(3199999)
+ 864 0680 30E3      		ldi r19,hlo8(3199999)
+ 865 0682 6150      	1:	subi r22,1
+ 866 0684 2040      		sbci r18,0
+ 867 0686 3040      		sbci r19,0
+ 868 0688 01F4      		brne 1b
+ 869 068a 00C0      		rjmp .
+ 870 068c 0000      		nop
+ 871 068e 2B98      		cbi 0x5,3
+ 872 0690 4FEF      		ldi r20,lo8(3199999)
+ 873 0692 63ED      		ldi r22,hi8(3199999)
+ 874 0694 20E3      		ldi r18,hlo8(3199999)
+ 875 0696 4150      	1:	subi r20,1
+ 876 0698 6040      		sbci r22,0
+ 877 069a 2040      		sbci r18,0
+ 878 069c 01F4      		brne 1b
+ 879 069e 00C0      		rjmp .
+ 880 06a0 0000      		nop
+ 881 06a2 2B9A      		sbi 0x5,3
+ 882 06a4 3FEF      		ldi r19,lo8(3199999)
+GAS LISTING /tmp/ccuqwZUw.s 			page 17
+
+
+ 883 06a6 43ED      		ldi r20,hi8(3199999)
+ 884 06a8 60E3      		ldi r22,hlo8(3199999)
+ 885 06aa 3150      	1:	subi r19,1
+ 886 06ac 4040      		sbci r20,0
+ 887 06ae 6040      		sbci r22,0
+ 888 06b0 01F4      		brne 1b
+ 889 06b2 00C0      		rjmp .
+ 890 06b4 0000      		nop
+ 891 06b6 2B98      		cbi 0x5,3
+ 892 06b8 2FEF      		ldi r18,lo8(3199999)
+ 893 06ba 33ED      		ldi r19,hi8(3199999)
+ 894 06bc 40E3      		ldi r20,hlo8(3199999)
+ 895 06be 2150      	1:	subi r18,1
+ 896 06c0 3040      		sbci r19,0
+ 897 06c2 4040      		sbci r20,0
+ 898 06c4 01F4      		brne 1b
+ 899 06c6 00C0      		rjmp .
+ 900 06c8 0000      		nop
+ 901 06ca 2B9A      		sbi 0x5,3
+ 902 06cc 6FEF      		ldi r22,lo8(9599999)
+ 903 06ce 2BE7      		ldi r18,hi8(9599999)
+ 904 06d0 32E9      		ldi r19,hlo8(9599999)
+ 905 06d2 6150      	1:	subi r22,1
+ 906 06d4 2040      		sbci r18,0
+ 907 06d6 3040      		sbci r19,0
+ 908 06d8 01F4      		brne 1b
+ 909 06da 00C0      		rjmp .
+ 910 06dc 0000      		nop
+ 911 06de 2B98      		cbi 0x5,3
+ 912               	.L38:
+ 913 06e0 4999      		sbic 0x9,1
+ 914 06e2 00C0      		rjmp .L39
+ 915 06e4 2C98      		cbi 0x5,4
+ 916 06e6 2A9A      		sbi 0x5,2
+ 917 06e8 4FEF      		ldi r20,lo8(3199999)
+ 918 06ea 63ED      		ldi r22,hi8(3199999)
+ 919 06ec 20E3      		ldi r18,hlo8(3199999)
+ 920 06ee 4150      	1:	subi r20,1
+ 921 06f0 6040      		sbci r22,0
+ 922 06f2 2040      		sbci r18,0
+ 923 06f4 01F4      		brne 1b
+ 924 06f6 00C0      		rjmp .
+ 925 06f8 0000      		nop
+ 926 06fa 2A98      		cbi 0x5,2
+ 927 06fc 3FEF      		ldi r19,lo8(3199999)
+ 928 06fe 43ED      		ldi r20,hi8(3199999)
+ 929 0700 60E3      		ldi r22,hlo8(3199999)
+ 930 0702 3150      	1:	subi r19,1
+ 931 0704 4040      		sbci r20,0
+ 932 0706 6040      		sbci r22,0
+ 933 0708 01F4      		brne 1b
+ 934 070a 00C0      		rjmp .
+ 935 070c 0000      		nop
+ 936 070e 2A9A      		sbi 0x5,2
+ 937 0710 2FEF      		ldi r18,lo8(3199999)
+ 938 0712 33ED      		ldi r19,hi8(3199999)
+ 939 0714 40E3      		ldi r20,hlo8(3199999)
+GAS LISTING /tmp/ccuqwZUw.s 			page 18
+
+
+ 940 0716 2150      	1:	subi r18,1
+ 941 0718 3040      		sbci r19,0
+ 942 071a 4040      		sbci r20,0
+ 943 071c 01F4      		brne 1b
+ 944 071e 00C0      		rjmp .
+ 945 0720 0000      		nop
+ 946 0722 2A98      		cbi 0x5,2
+ 947 0724 6FEF      		ldi r22,lo8(3199999)
+ 948 0726 23ED      		ldi r18,hi8(3199999)
+ 949 0728 30E3      		ldi r19,hlo8(3199999)
+ 950 072a 6150      	1:	subi r22,1
+ 951 072c 2040      		sbci r18,0
+ 952 072e 3040      		sbci r19,0
+ 953 0730 01F4      		brne 1b
+ 954 0732 00C0      		rjmp .
+ 955 0734 0000      		nop
+ 956 0736 2A9A      		sbi 0x5,2
+ 957 0738 4FEF      		ldi r20,lo8(9599999)
+ 958 073a 6BE7      		ldi r22,hi8(9599999)
+ 959 073c 22E9      		ldi r18,hlo8(9599999)
+ 960 073e 4150      	1:	subi r20,1
+ 961 0740 6040      		sbci r22,0
+ 962 0742 2040      		sbci r18,0
+ 963 0744 01F4      		brne 1b
+ 964 0746 00C0      		rjmp .
+ 965 0748 0000      		nop
+ 966 074a 2A98      		cbi 0x5,2
+ 967               	.L39:
+ 968 074c 4B99      		sbic 0x9,3
+ 969 074e 00C0      		rjmp .L40
+ 970 0750 2C98      		cbi 0x5,4
+ 971 0752 3FEF      		ldi r19,lo8(799999)
+ 972 0754 44E3      		ldi r20,hi8(799999)
+ 973 0756 6CE0      		ldi r22,hlo8(799999)
+ 974 0758 3150      	1:	subi r19,1
+ 975 075a 4040      		sbci r20,0
+ 976 075c 6040      		sbci r22,0
+ 977 075e 01F4      		brne 1b
+ 978 0760 00C0      		rjmp .
+ 979 0762 0000      		nop
+ 980 0764 22E0      		ldi r18,lo8(2)
+ 981 0766 E22E      		mov r14,r18
+ 982               	.L40:
+ 983 0768 2C98      		cbi 0x5,4
+ 984 076a 20E0      		ldi r18,0
+ 985 076c 30E0      		ldi r19,0
+ 986               	.L41:
+ 987 076e 45E0      		ldi r20,lo8(5)
+ 988 0770 4A95      	1:	dec r20
+ 989 0772 01F4      		brne 1b
+ 990 0774 0000      		nop
+ 991 0776 2F5F      		subi r18,-1
+ 992 0778 3F4F      		sbci r19,-1
+ 993 077a 2817      		cp r18,r24
+ 994 077c 3907      		cpc r19,r25
+ 995 077e 00F0      		brlo .L41
+ 996 0780 2C9A      		sbi 0x5,4
+GAS LISTING /tmp/ccuqwZUw.s 			page 19
+
+
+ 997 0782 20E0      		ldi r18,0
+ 998 0784 30E0      		ldi r19,0
+ 999 0786 A501      		movw r20,r10
+ 1000 0788 481B      		sub r20,r24
+ 1001 078a 590B      		sbc r21,r25
+ 1002               	.L42:
+ 1003 078c 2417      		cp r18,r20
+ 1004 078e 3507      		cpc r19,r21
+ 1005 0790 00F0      		brlo .+2
+ 1006 0792 00C0      		rjmp .L68
+ 1007 0794 65E0      		ldi r22,lo8(5)
+ 1008 0796 6A95      	1:	dec r22
+ 1009 0798 01F4      		brne 1b
+ 1010 079a 0000      		nop
+ 1011 079c 2F5F      		subi r18,-1
+ 1012 079e 3F4F      		sbci r19,-1
+ 1013 07a0 00C0      		rjmp .L42
+ 1014               	.L25:
+ 1015 07a2 82E0      		ldi r24,lo8(2)
+ 1016 07a4 E812      		cpse r14,r24
+ 1017 07a6 00C0      		rjmp .L44
+ 1018 07a8 2C98      		cbi 0x5,4
+ 1019               	.L44:
+ 1020 07aa 91E0      		ldi r25,lo8(1)
+ 1021 07ac C912      		cpse r12,r25
+ 1022 07ae 00C0      		rjmp .L3
+ 1023 07b0 61E0      		ldi r22,lo8(1)
+ 1024 07b2 8AE0      		ldi r24,lo8(10)
+ 1025 07b4 0E94 0000 		call lcd_gotoxy
+ 1026 07b8 4899      		sbic 0x9,0
+ 1027 07ba 00C0      		rjmp .L46
+ 1028 07bc 2FEF      		ldi r18,lo8(799999)
+ 1029 07be 34E3      		ldi r19,hi8(799999)
+ 1030 07c0 4CE0      		ldi r20,hlo8(799999)
+ 1031 07c2 2150      	1:	subi r18,1
+ 1032 07c4 3040      		sbci r19,0
+ 1033 07c6 4040      		sbci r20,0
+ 1034 07c8 01F4      		brne 1b
+ 1035 07ca 00C0      		rjmp .
+ 1036 07cc 0000      		nop
+ 1037 07ce D394      		inc r13
+ 1038 07d0 4AE0      		ldi r20,lo8(10)
+ 1039 07d2 BE01      		movw r22,r28
+ 1040 07d4 6F5F      		subi r22,-1
+ 1041 07d6 7F4F      		sbci r23,-1
+ 1042 07d8 8D2D      		mov r24,r13
+ 1043 07da 90E0      		ldi r25,0
+ 1044 07dc 0E94 0000 		call __itoa_ncheck
+ 1045 07e0 CE01      		movw r24,r28
+ 1046 07e2 0196      		adiw r24,1
+ 1047 07e4 0E94 0000 		call lcd_puts
+ 1048 07e8 6CE3      		ldi r22,lo8(60)
+ 1049 07ea D612      		cpse r13,r22
+ 1050 07ec 00C0      		rjmp .L46
+ 1051 07ee DD24      		clr r13
+ 1052 07f0 DA94      		dec r13
+ 1053               	.L46:
+GAS LISTING /tmp/ccuqwZUw.s 			page 20
+
+
+ 1054 07f2 4999      		sbic 0x9,1
+ 1055 07f4 00C0      		rjmp .L47
+ 1056 07f6 8FEF      		ldi r24,lo8(799999)
+ 1057 07f8 94E3      		ldi r25,hi8(799999)
+ 1058 07fa 2CE0      		ldi r18,hlo8(799999)
+ 1059 07fc 8150      	1:	subi r24,1
+ 1060 07fe 9040      		sbci r25,0
+ 1061 0800 2040      		sbci r18,0
+ 1062 0802 01F4      		brne 1b
+ 1063 0804 00C0      		rjmp .
+ 1064 0806 0000      		nop
+ 1065 0808 61E0      		ldi r22,lo8(1)
+ 1066 080a 8CE0      		ldi r24,lo8(12)
+ 1067 080c 0E94 0000 		call lcd_gotoxy
+ 1068 0810 80E0      		ldi r24,lo8(.LC14)
+ 1069 0812 90E0      		ldi r25,hi8(.LC14)
+ 1070 0814 0E94 0000 		call lcd_puts
+ 1071 0818 61E0      		ldi r22,lo8(1)
+ 1072 081a 8DE0      		ldi r24,lo8(13)
+ 1073 081c 0E94 0000 		call lcd_gotoxy
+ 1074 0820 0F5F      		subi r16,lo8(-(1))
+ 1075 0822 4AE0      		ldi r20,lo8(10)
+ 1076 0824 BE01      		movw r22,r28
+ 1077 0826 6F5F      		subi r22,-1
+ 1078 0828 7F4F      		sbci r23,-1
+ 1079 082a 802F      		mov r24,r16
+ 1080 082c 90E0      		ldi r25,0
+ 1081 082e 0E94 0000 		call __itoa_ncheck
+ 1082 0832 CE01      		movw r24,r28
+ 1083 0834 0196      		adiw r24,1
+ 1084 0836 0E94 0000 		call lcd_puts
+ 1085 083a 0C33      		cpi r16,lo8(60)
+ 1086 083c 01F4      		brne .L47
+ 1087 083e 0FEF      		ldi r16,lo8(-1)
+ 1088               	.L47:
+ 1089 0840 4B99      		sbic 0x9,3
+ 1090 0842 00C0      		rjmp .L3
+ 1091               	.L48:
+ 1092 0844 0023      		tst r16
+ 1093 0846 01F4      		brne .+2
+ 1094 0848 00C0      		rjmp .L3
+ 1095 084a 3FEF      		ldi r19,lo8(3199999)
+ 1096 084c 43ED      		ldi r20,hi8(3199999)
+ 1097 084e 60E3      		ldi r22,hlo8(3199999)
+ 1098 0850 3150      	1:	subi r19,1
+ 1099 0852 4040      		sbci r20,0
+ 1100 0854 6040      		sbci r22,0
+ 1101 0856 01F4      		brne 1b
+ 1102 0858 00C0      		rjmp .
+ 1103 085a 0000      		nop
+ 1104 085c 61E0      		ldi r22,lo8(1)
+ 1105 085e 8DE0      		ldi r24,lo8(13)
+ 1106 0860 0E94 0000 		call lcd_gotoxy
+ 1107 0864 4AE0      		ldi r20,lo8(10)
+ 1108 0866 BE01      		movw r22,r28
+ 1109 0868 6F5F      		subi r22,-1
+ 1110 086a 7F4F      		sbci r23,-1
+GAS LISTING /tmp/ccuqwZUw.s 			page 21
+
+
+ 1111 086c 802F      		mov r24,r16
+ 1112 086e 90E0      		ldi r25,0
+ 1113 0870 0E94 0000 		call __itoa_ncheck
+ 1114 0874 CE01      		movw r24,r28
+ 1115 0876 0196      		adiw r24,1
+ 1116 0878 0E94 0000 		call lcd_puts
+ 1117 087c 0150      		subi r16,lo8(-(-1))
+ 1118 087e 00C0      		rjmp .L48
+ 1120               		.comm	lcd_string,10,1
+ 1121               	.global	minuty
+ 1122               		.section .bss
+ 1125               	minuty:
+ 1126 0000 00        		.zero	1
+ 1127               	.global	sekundy
+ 1130               	sekundy:
+ 1131 0001 00        		.zero	1
+ 1132               		.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.6.1_1752) 5.4.0"
+ 1133               	.global __do_copy_data
+ 1134               	.global __do_clear_bss
+GAS LISTING /tmp/ccuqwZUw.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccuqwZUw.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccuqwZUw.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccuqwZUw.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccuqwZUw.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccuqwZUw.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccuqwZUw.s:10     .text:0000000000000000 setup
+     /tmp/ccuqwZUw.s:78     .text.startup:0000000000000000 main
+                            *COM*:000000000000000a lcd_string
+     /tmp/ccuqwZUw.s:1125   .bss:0000000000000000 minuty
+     /tmp/ccuqwZUw.s:1130   .bss:0000000000000001 sekundy
+
+UNDEFINED SYMBOLS
+lcd_init
+lcd_clrscr
+time
+lcd_puts
+lcd_gotoxy
+lcd_putc
+__itoa_ncheck
+__do_copy_data
+__do_clear_bss
